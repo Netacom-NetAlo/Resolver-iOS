@@ -11,11 +11,11 @@ import XCTest
 
 class ResolverBasicTests: XCTestCase {
 
-    var resolver: Resolver!
+    var resolver: MyResolver!
 
     override func setUp() {
         super.setUp()
-        resolver = Resolver()
+        resolver = MyResolver()
     }
     
     override func tearDown() {
@@ -88,19 +88,19 @@ class ResolverBasicTests: XCTestCase {
     }
 
     func testRegistrationAndResolutionResolveArgs() {
-        let service: XYZService = Resolver.resolve(args: true)
+        let service: XYZService = MyResolver.resolve(args: true)
         XCTAssertNotNil(service.session)
     }
 
     func testStaticRegistrationAndResolution() {
-        Resolver.register { XYZSessionService() }
-        let service: XYZService = Resolver.resolve()
+        MyResolver.register { XYZSessionService() }
+        let service: XYZService = MyResolver.resolve()
         XCTAssertNotNil(service.session)
     }
 
     func testStaticRegistrationWithArgsAndResolution() {
-        Resolver.register { _, _ in XYZSessionService() }
-        let service: XYZService = Resolver.resolve()
+        MyResolver.register { _, _ in XYZSessionService() }
+        let service: XYZService = MyResolver.resolve()
         XCTAssertNotNil(service.session)
     }
 

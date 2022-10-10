@@ -23,8 +23,8 @@ class NamedInjectedViewController2 {
     @Injected(name: "barney") var service: XYZNameService
 }
 
-extension Resolver {
-    static var custom = Resolver()
+extension MyResolver {
+    static var custom = MyResolver()
 }
 
 class ContainerInjectedViewController {
@@ -77,21 +77,21 @@ class ResolverInjectedTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        Resolver.main.register { WeakXYZService(nil) }
+        MyResolver.main.register { WeakXYZService(nil) }
             .implements(ReturnsSomthing.self)
             .scope(.shared)
 
-        Resolver.main.register { XYZSessionService() }
-        Resolver.main.register { XYZService(Resolver.main.optional()) }
+        MyResolver.main.register { XYZSessionService() }
+        MyResolver.main.register { XYZService(MyResolver.main.optional()) }
 
-        Resolver.main.register(name: "fred") { XYZNameService("fred") }
-        Resolver.main.register(name: "barney") { XYZNameService("barney") }
+        MyResolver.main.register(name: "fred") { XYZNameService("fred") }
+        MyResolver.main.register(name: "barney") { XYZNameService("barney") }
 
-        Resolver.main.register { (_, args) in
+        MyResolver.main.register { (_, args) in
             XYZArgumentService(condition: args("condition"), string: args("string"))
         }
         
-        Resolver.custom.register { XYZNameService("custom") }
+        MyResolver.custom.register { XYZNameService("custom") }
     }
 
     override func tearDown() {

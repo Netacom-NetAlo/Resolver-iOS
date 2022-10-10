@@ -24,7 +24,7 @@
 		4C653ED2246EC80700131637 /* ResolverArgumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C653ED1246EC80700131637 /* ResolverArgumentTests.swift */; };
 		4C9BFB0C2357D98800E6FB80 /* ResolverInjectedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BFB0B2357D98800E6FB80 /* ResolverInjectedTests.swift */; };
 		4CA289B625771DF6000C6F95 /* ResolverCyclicDependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA289B525771DF6000C6F95 /* ResolverCyclicDependencyTests.swift */; };
-		OBJ_40 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Resolver.swift */; };
+		OBJ_40 /* MyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* MyResolver.swift */; };
 		OBJ_47 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_58 /* ResolverBasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ResolverBasicTests.swift */; };
 		OBJ_59 /* ResolverClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* ResolverClassTests.swift */; };
@@ -80,7 +80,7 @@
 		OBJ_33 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_34 /* _config.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = _config.yml; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		OBJ_9 /* MyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyResolver.swift; sourceTree = "<group>"; };
 		"Resolver::Resolver::Product" /* Resolver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Resolver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Resolver::ResolverTests::Product" /* ResolverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ResolverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -171,7 +171,7 @@
 		OBJ_8 /* Resolver */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* Resolver.swift */,
+				OBJ_9 /* MyResolver.swift */,
 			);
 			name = Resolver;
 			path = Sources/Resolver;
@@ -262,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_40 /* Resolver.swift in Sources */,
+				OBJ_40 /* MyResolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

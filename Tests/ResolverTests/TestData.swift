@@ -9,7 +9,7 @@
 import Foundation
 import Resolver
 
-extension Resolver: ResolverRegistering {
+extension MyResolver: ResolverRegistering {
     public static func registerAllServices() {
         register { XYZSessionService() }
         register { XYZService( optional() ) }
