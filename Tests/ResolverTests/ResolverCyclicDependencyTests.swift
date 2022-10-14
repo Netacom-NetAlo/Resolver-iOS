@@ -8,14 +8,14 @@
 import XCTest
 @testable import Resolver
 
-private var resolver: Resolver!
+private var resolver: MyResolver!
 
 class ResolverCyclicDependencyTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
 
-        resolver = Resolver()
+        resolver = MyResolver()
         
         resolver.register(name: "graph") {
             CyclicA(resolver.resolve())

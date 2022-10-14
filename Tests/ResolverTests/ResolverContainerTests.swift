@@ -11,8 +11,8 @@ import XCTest
 
 class ResolverContainerTests: XCTestCase {
 
-    var resolver1: Resolver!
-    var resolver2: Resolver!
+    var resolver1: MyResolver!
+    var resolver2: MyResolver!
 
     override func setUp() {
         super.setUp()
@@ -24,8 +24,8 @@ class ResolverContainerTests: XCTestCase {
 
     func testResolverDistinctContainers() {
 
-        resolver1 = Resolver()
-        resolver2 = Resolver()
+        resolver1 = MyResolver()
+        resolver2 = MyResolver()
 
         resolver1.register() { XYZNameService("Fred") }
         resolver2.register() { XYZNameService("Barney") }
@@ -41,8 +41,8 @@ class ResolverContainerTests: XCTestCase {
 
     func testResolverDistinctContainersRedux() {
 
-        resolver1 = Resolver()
-        resolver2 = Resolver()
+        resolver1 = MyResolver()
+        resolver2 = MyResolver()
 
         resolver1.register() { XYZNameService("Fred") }
 
@@ -56,8 +56,8 @@ class ResolverContainerTests: XCTestCase {
 
     func testResolverParentContainers() {
 
-        resolver1 = Resolver()
-        resolver2 = Resolver(parent: resolver1)
+        resolver1 = MyResolver()
+        resolver2 = MyResolver(parent: resolver1)
 
         resolver1.register() { XYZNameService("Resolver 1") }
 
@@ -74,8 +74,8 @@ class ResolverContainerTests: XCTestCase {
 
     func testResolverParentContainerOverride() {
 
-        resolver1 = Resolver()
-        resolver2 = Resolver(parent: resolver1)
+        resolver1 = MyResolver()
+        resolver2 = MyResolver(parent: resolver1)
 
         resolver1.register() { XYZNameService("Overridden") }
         resolver2.register() { XYZNameService("Resolved") }
@@ -93,8 +93,8 @@ class ResolverContainerTests: XCTestCase {
 
     func testResolverParentOverrideSpecificNamedServices() {
 
-        resolver1 = Resolver()
-        resolver2 = Resolver(parent: resolver1)
+        resolver1 = MyResolver()
+        resolver2 = MyResolver(parent: resolver1)
 
         resolver1.register()             { XYZNameService("Unnamed service") }
         resolver1.register(name: "Name") { XYZNameService("Overriden named service") }
@@ -122,8 +122,8 @@ class ResolverContainerTests: XCTestCase {
 
     func testResolverParentOverrideSpecificUnnamedServices() {
 
-        resolver1 = Resolver()
-        resolver2 = Resolver(parent: resolver1)
+        resolver1 = MyResolver()
+        resolver2 = MyResolver(parent: resolver1)
 
         resolver1.register(name: "Name") { XYZNameService("Named service") }
         resolver1.register()             { XYZNameService("Overriden unnamed service") }

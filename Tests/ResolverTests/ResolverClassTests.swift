@@ -11,7 +11,7 @@ import XCTest
 
 class ResolverClassTests: XCTestCase {
 
-    var resolver: Resolver!
+    var resolver: MyResolver!
 
     override func setUp() {
         super.setUp()
@@ -22,72 +22,72 @@ class ResolverClassTests: XCTestCase {
     }
 
     func testRegistrationAndExplicitResolution() {
-        let session: XYZSessionService? = Resolver.resolve(XYZSessionService.self)
+        let session: XYZSessionService? = MyResolver.resolve(XYZSessionService.self)
         XCTAssertNotNil(session)
     }
 
     func testRegistrationAndInferedResolution() {
-        let session: XYZSessionService? = Resolver.resolve() as XYZSessionService
+        let session: XYZSessionService? = MyResolver.resolve() as XYZSessionService
         XCTAssertNotNil(session)
     }
 
     func testRegistrationAndOptionalResolution() {
-        let session: XYZSessionService? = Resolver.optional()
+        let session: XYZSessionService? = MyResolver.optional()
         XCTAssertNotNil(session)
     }
 
     func testRegistrationAndOptionalResolutionFailure() {
-        let unknown: XYZNameService? = Resolver.optional()
+        let unknown: XYZNameService? = MyResolver.optional()
         XCTAssertNil(unknown)
     }
 
     func testRegistrationAndResolutionChain() {
-        let service: XYZService? = Resolver.optional()
+        let service: XYZService? = MyResolver.optional()
         XCTAssertNotNil(service)
         XCTAssertNotNil(service?.session)
     }
 
     func testRegistrationOverwritting() {
-        Resolver.register() { XYZNameService("Fred") }
-        Resolver.register() { XYZNameService("Barney") }
-        let service: XYZNameService? = Resolver.optional()
+        MyResolver.register() { XYZNameService("Fred") }
+        MyResolver.register() { XYZNameService("Barney") }
+        let service: XYZNameService? = MyResolver.optional()
         XCTAssertNotNil(service)
         XCTAssert(service?.name == "Barney")
     }
 
     func testRegistrationAndPassedResolver() {
-        Resolver.register { XYZSessionService() }
-        Resolver.register { (r) -> XYZService in
+        MyResolver.register { XYZSessionService() }
+        MyResolver.register { (r) -> XYZService in
             return XYZService( r.optional() )
         }
-        let service: XYZService? = Resolver.optional()
+        let service: XYZService? = MyResolver.optional()
         XCTAssertNotNil(service)
         XCTAssertNotNil(service?.session)
     }
 
    func testRegistrationAndResolutionProperties() {
-        Resolver.register(name: "Props") { XYZSessionService() }
+        MyResolver.register(name: "Props") { XYZSessionService() }
             .resolveProperties { (r, s) in
                 s.name = "updated"
         }
-        let session: XYZSessionService? = Resolver.optional(name: "Props")
+        let session: XYZSessionService? = MyResolver.optional(name: "Props")
         XCTAssertNotNil(session)
         XCTAssert(session?.name == "updated")
     }
 
     func testRegistrationAndResolutionArguments() {
-        let service: XYZService? = Resolver.optional(args: true)
+        let service: XYZService? = MyResolver.optional(args: true)
         XCTAssertNotNil(service)
         XCTAssertNotNil(service?.session)
     }
 
     func testRegistrationAndResolutionResolve() {
-        let service: XYZService = Resolver.resolve()
+        let service: XYZService = MyResolver.resolve()
         XCTAssertNotNil(service.session)
     }
 
     func testRegistrationAndResolutionResolveArgs() {
-        let service: XYZService = Resolver.resolve(args: true)
+        let service: XYZService = MyResolver.resolve(args: true)
         XCTAssertNotNil(service.session)
     }
 

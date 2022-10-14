@@ -11,11 +11,11 @@ import XCTest
 
 class ResolverScopeReferenceTests: XCTestCase {
 
-    var resolver: Resolver!
+    var resolver: MyResolver!
 
     override func setUp() {
         super.setUp()
-        resolver = Resolver()
+        resolver = MyResolver()
     }
 
     override func tearDown() {

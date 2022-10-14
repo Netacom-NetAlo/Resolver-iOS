@@ -9,18 +9,18 @@
 import XCTest
 @testable import Resolver
 
-extension Resolver.Name {
+extension MyResolver.Name {
     static let fred = Self("Fred")
     static let barney = Self("Barney")
 }
 
 class ResolverNameTests: XCTestCase {
 
-    var resolver: Resolver!
+    var resolver: MyResolver!
 
     override func setUp() {
         super.setUp()
-        resolver = Resolver()
+        resolver = MyResolver()
     }
 
     override func tearDown() {
