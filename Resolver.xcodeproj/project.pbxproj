@@ -375,6 +375,7 @@
 					x86_64,
 					arm64,
 				);
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CURRENT_PROJECT_VERSION = 23;
 				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -413,6 +414,7 @@
 					x86_64,
 					arm64,
 				);
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CURRENT_PROJECT_VERSION = 23;
 				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
